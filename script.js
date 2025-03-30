@@ -88,7 +88,8 @@ document.getElementById("taskForm").addEventListener("submit", async function(ev
       fetch(scriptURL, {
           method: "POST",
           body: JSON.stringify({ name, department, task: selectedTask }),
-          headers: { "Content-Type": "application/json" }
+          headers: { "Content-Type": "application/json" },
+          mode: "no-cors"  // Это отключит CORS
       });
 
       document.querySelector("button[type='submit']").disabled = true;
@@ -96,4 +97,3 @@ document.getElementById("taskForm").addEventListener("submit", async function(ev
       alert("Ошибка: задания не найдены!");
   }
 });
-
