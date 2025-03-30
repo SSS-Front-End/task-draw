@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Розыгрыш заданий</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Выбери свой отдел и получи задание!</h1>
+        <form id="taskForm">
+            <label class="nameTitle" for="name">Имя:</label>
+            <input class="nameInput" type="text" id="name" name="name" required>
+            <label for="department" class="form-desc">Выберите отдел:</label>
+            <select id="department" required>
+                <option value="hr">HR департамент</option>
+                <option value="bank">Банк</option>
+                <option value="marketing">Маркетинг</option>
+                <option value="it">ИТ/ИБ</option>
+                <option value="aup">АУП</option>
+                <option value="accounting">Бухгалтерия</option>
+                <option value="installments">Рассрочка</option>
+                <option value="callcenter">Колл Центр</option>
+                <option value="partners">Партнерская сеть</option>
+                <option value="legal">Юридический</option>
+            </select>
+            <button type="submit">Получить задание</button>
+        </form>
+    </div>
+    <div id="modal" class="modal">
+      <div class="modal-content">
+          <h1 id="userName"></h1>
+          <p style="font-size: 18px; font-weight: bold;" class="taskValue">Ваше задание:</p>
+          <p id="taskText"></p>
+          <button id="closeModal">Закрыть</button>
+      </div>
+  </div>
+    <script src="script.js"></script>
+</body>
+</html>
