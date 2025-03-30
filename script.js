@@ -60,12 +60,20 @@ const tasks = {
   ]
 };
 
+let hasSubmitted = localStorage.getItem('hasSubmitted'); 
+
 document.getElementById("taskForm").addEventListener("submit", async function(event) {
   event.preventDefault();
 
+  if (hasSubmitted) {
+    alert("Вы уже отправили задание!");
+  }
+
   const name = document.getElementById("name").value.trim();
-  const department = document.getElementById("department").value;
-  const taskList = tasks[department];
+  const departmentSelect = document.getElementById("department");
+  const departmentText = departmentSelect.options[departmentSelect.selectedIndex].text; 
+  const departmentValue = departmentSelect.value;  
+  const taskList = tasks[departmentValue];
   const modal = document.getElementById("modal");
   const taskText = document.getElementById("taskText");
   const userName = document.getElementById("userName");
@@ -87,13 +95,20 @@ document.getElementById("taskForm").addEventListener("submit", async function(ev
       const scriptURL = "https://script.google.com/macros/s/AKfycbylwq5jCHx8BHLMRWiugCc2k1RFiMqLgECzFMJ3o80H4pfJDm21UW7toNYodIC514g-0Q/exec"; 
       fetch(scriptURL, {
           method: "POST",
-          body: JSON.stringify({ name, department, task: selectedTask }),
+          body: JSON.stringify({ name, department: departmentText, task: selectedTask }), 
           headers: { "Content-Type": "application/json" },
-          mode: "no-cors"  // Это отключит CORS
+          mode: "no-cors"
       });
+
+      localStorage.setItem('hasSubmitted', 'true');
 
       document.querySelector("button[type='submit']").disabled = true;
   } else {
       alert("Ошибка: задания не найдены!");
   }
+});
+
+document.getElementById("closeModal").addEventListener("click", function() {
+  const modal = document.getElementById("modal");
+  modal.classList.remove("show");  
 });
