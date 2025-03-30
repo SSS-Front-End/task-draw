@@ -1,11 +1,14 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     background-color: #f4f4f9;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+
+
+    color: #333333ec;
 }
 
 .container {
@@ -66,20 +69,37 @@ select, button {
 }
 
 button {
-    background-color: #007bff;
+    background-color: #28a745;
     color: white;
     border: none;
     cursor: pointer;
-    transition: background 0.3s;
-    font-weight: bold;
-    margin-top: 20px;
+    padding: 17px 24px;
+    margin-top: 30px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    animation: pulse 1.5s infinite; 
 }
 
-button:hover {
-    background-color: #0056b3;
+@keyframes pulse {
+    0% {
+        transform: scale(1); 
+    }
+    50% {
+        transform: scale(1.03); 
+    }
+    100% {
+        transform: scale(1); 
+    }
 }
 
-button:disabled {
+option:hover {
+    background-color: #28a745;
+}
+
+
+select:not(:-internal-list-box):not([multiple]) option:enabled:hover {
     background-color: #ccc;
     cursor: not-allowed;
 }
@@ -155,7 +175,7 @@ button:disabled {
 .modal button {
     margin-top: 15px;
     padding: 8px 16px;
-    background: #007bff;
+    background: #28a745;
     color: white;
     border: none;
     border-radius: 5px;
@@ -163,5 +183,51 @@ button:disabled {
 }
 
 .modal button:hover {
-    background: #0056b3;
+    background: #28a745;
+}
+
+/* Адаптация */
+@media (max-width: 600px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 20px;
+        width: 90%;
+        height: 50vh;
+    }
+
+    h1 {
+        font-size: 32px;
+        margin: 0;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .nameTitle, .form-desc {
+        font-size: 22px;
+    }
+
+    .nameInput, select, button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    button {
+        padding: 17px 0;
+        margin-top: 30px;
+        font-size: 18px;
+        letter-spacing: 1.5px;
+    }
+
+    .modal-content {
+        font-size: 16px;
+    }
+
+    .modal button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
 }
