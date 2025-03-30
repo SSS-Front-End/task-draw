@@ -60,13 +60,15 @@ const tasks = {
   ]
 };
 
-let hasSubmitted = localStorage.getItem('hasSubmitted'); 
+let hasSubmitted = localStorage.getItem('hasSubmitted');  
 
 document.getElementById("taskForm").addEventListener("submit", async function(event) {
   event.preventDefault();
 
+  
   if (hasSubmitted) {
-    alert("Вы уже отправили задание!");
+    alert("Вы уже отправили задание!");  
+    return; 
   }
 
   const name = document.getElementById("name").value.trim();
@@ -80,7 +82,7 @@ document.getElementById("taskForm").addEventListener("submit", async function(ev
 
   if (!name) {
       alert("Введите имя!");
-      return;
+      return;  
   }
 
   if (taskList && taskList.length > 0) {
